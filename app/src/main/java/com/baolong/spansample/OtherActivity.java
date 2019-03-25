@@ -284,7 +284,7 @@ public class OtherActivity extends AppCompatActivity {
      */
     private void setImageSpan(int start, int end) {
         SpannableString spannableString = new SpannableString("这是图片哦");
-        Drawable drawable = getResources().getDrawable(R.mipmap.smail);
+        Drawable drawable = getResources().getDrawable(R.drawable.smile);
         drawable.setBounds(0, 0, 42, 42);
         ImageSpan imageSpan = new ImageSpan(drawable);
         spannableString.setSpan(imageSpan, start, end, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
