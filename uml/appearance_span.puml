@@ -1,0 +1,28 @@
+@startuml
+
+interface UpdateAppearance
+abstract class CharacterStyle
+abstract class ClickableSpan {
+    +abstract void onClick()
+}
+
+UpdateAppearance <|.. BackgroundColorSpan
+CharacterStyle <|-- BackgroundColorSpan
+
+UpdateAppearance <|.. ForegroundColorSpan
+CharacterStyle <|-- ForegroundColorSpan
+
+UpdateAppearance <|.. UnderlineSpan
+CharacterStyle <|-- UnderlineSpan
+
+UpdateAppearance <|.. StrikethroughSpan
+CharacterStyle <|-- StrikethroughSpan
+
+UpdateAppearance <|.. ClickableSpan
+CharacterStyle <|-- ClickableSpan
+ClickableSpan <|-- URLSpan
+
+UpdateAppearance <|.. MaskFilterSpan
+CharacterStyle <|-- MaskFilterSpan
+
+@enduml
