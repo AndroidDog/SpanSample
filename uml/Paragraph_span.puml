@@ -1,0 +1,26 @@
+@startuml
+
+interface ParagraphStyle
+
+interface AlignmentSpan extends ParagraphStyle
+class AlignmentSpan#Standard implements AlignmentSpan
+
+interface WrapTogetherSpan extends ParagraphStyle
+
+interface LineHeightSpan extends ParagraphStyle, WrapTogetherSpan
+interface WithDensity extends LineHeightSpan
+
+interface LeadingMarginSpan extends ParagraphStyle
+class LeadingMarginSpan#Standard extends LeadingMarginSpan
+class BulletSpan implements LeadingMarginSpan
+class DrawableMarginSpan implements LeadingMarginSpan, LineHeightSpan
+class IconMarginSpan implements LeadingMarginSpan, LineHeightSpan
+class QuoteSpan implements LeadingMarginSpan
+
+interface LineBackgroundSpan extends ParagraphStyle
+
+interface TabStopSpan extends ParagraphStyle
+class TabStopSpan#Standard implements TabStopSpan
+
+
+@enduml

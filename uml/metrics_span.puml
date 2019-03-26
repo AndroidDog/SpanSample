@@ -1,0 +1,36 @@
+@startuml
+
+interface UpdateAppearance
+interface UpdateLayout
+abstract class CharacterStyle
+abstract class MetricAffectingSpan
+abstract class ReplacementSpan
+abstract class DynamicDrawableSpan
+
+UpdateAppearance <|.. UpdateLayout
+UpdateLayout <|.. MetricAffectingSpan
+CharacterStyle <|-- MetricAffectingSpan
+
+MetricAffectingSpan <|-- AbsoluteSizeSpan
+
+MetricAffectingSpan <|-- RelativeSizeSpan
+
+MetricAffectingSpan <|-- ReplacementSpan
+ReplacementSpan <|-- DynamicDrawableSpan
+DynamicDrawableSpan <|-- ImageSpan
+
+MetricAffectingSpan <|-- SubscriptSpan
+
+MetricAffectingSpan <|-- SuperscriptSpan
+
+MetricAffectingSpan <|-- ScaleXSpan
+
+MetricAffectingSpan <|-- StyleSpan
+
+MetricAffectingSpan <|-- TextAppearanceSpan
+
+MetricAffectingSpan <|-- TypefaceSpan
+
+MetricAffectingSpan <|-- LocaleSpan
+
+@enduml

@@ -1,0 +1,14 @@
+@startuml
+
+abstract class CharacterStyle {
+    +abstract void updateDrawState(TextPaint tp)
+}
+
+abstract class MetricAffectingSpan{
+    +abstract void updateMeasureState(TextPaint textPaint)
+}
+
+CharacterStyle <|-- MetricAffectingSpan
+
+
+@enduml

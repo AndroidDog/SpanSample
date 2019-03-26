@@ -2,6 +2,7 @@ package com.baolong.spansample;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.graphics.BlurMaskFilter;
 import android.graphics.Color;
 import android.graphics.EmbossMaskFilter;
@@ -9,21 +10,28 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Layout;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
+import android.text.style.AlignmentSpan;
 import android.text.style.BackgroundColorSpan;
+import android.text.style.BulletSpan;
 import android.text.style.ClickableSpan;
 import android.text.style.DynamicDrawableSpan;
 import android.text.style.ForegroundColorSpan;
+import android.text.style.IconMarginSpan;
 import android.text.style.ImageSpan;
+import android.text.style.LeadingMarginSpan;
 import android.text.style.MaskFilterSpan;
+import android.text.style.QuoteSpan;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.StrikethroughSpan;
 import android.text.style.SubscriptSpan;
 import android.text.style.SuperscriptSpan;
+import android.text.style.TabStopSpan;
 import android.text.style.URLSpan;
 import android.text.style.UnderlineSpan;
 import android.view.View;
@@ -62,6 +70,22 @@ public class OtherActivity extends AppCompatActivity {
     TextView tv11;
     @BindView(R.id.tv12)
     TextView tv12;
+    @BindView(R.id.tv13)
+    TextView tv13;
+    @BindView(R.id.tv14)
+    TextView tv14;
+    @BindView(R.id.tv15)
+    TextView tv15;
+    @BindView(R.id.tv16)
+    TextView tv16;
+    @BindView(R.id.tv17)
+    TextView tv17;
+    @BindView(R.id.tv18)
+    TextView tv18;
+    @BindView(R.id.tv19)
+    TextView tv19;
+
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -110,6 +134,54 @@ public class OtherActivity extends AppCompatActivity {
 
         setSuperscriptSpan(4,6);
 
+        setAlignmentSpan();
+
+        setLeadingMarginSpan();
+
+        setQuoteSpan();
+
+        setTabStopSpan();
+
+        setIconImageSpan();
+
+        setBulletSpan();
+
+    }
+
+    private void setBulletSpan() {
+        SpannableString string = new SpannableString("Text with\nBullet point");
+        string.setSpan(new BulletSpan(40, Color.GREEN, 20), 10, 22, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        tv18.setText(string);
+    }
+
+    private void setIconImageSpan() {
+        SpannableString string = new SpannableString("Text with icon and padding");
+        string.setSpan(new IconMarginSpan(BitmapFactory.decodeResource(getResources(), R.drawable.smile), 30), 0, string.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        tv17.setText(string);
+    }
+
+    private void setTabStopSpan() {
+        SpannableString spannableString = new SpannableString("\tParagraph text beginning with tab.");
+        spannableString.setSpan(new TabStopSpan.Standard(100), 0, spannableString.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        tv16.setText(spannableString);
+    }
+
+    private void setQuoteSpan() {
+        SpannableString spannableString = new SpannableString("Text is\nspantastic");
+        spannableString.setSpan(new QuoteSpan(Color.RED, 20, 40), 8, spannableString.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        tv15.setText(spannableString);
+    }
+
+    private void setLeadingMarginSpan() {
+        SpannableString spannableString = new SpannableString("line1, Text to be set leading margin, I am so long,I am so long,I am so long,I am so long,I am so long\nline2, Text to be set leading margin");
+        spannableString.setSpan(new LeadingMarginSpan.Standard(50, 30), 0, spannableString.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        tv14.setText(spannableString);
+    }
+
+    private void setAlignmentSpan() {
+        SpannableString spannableString = new SpannableString("Text with opposite alignment");
+        spannableString.setSpan(new AlignmentSpan.Standard(Layout.Alignment.ALIGN_OPPOSITE), 0, spannableString.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        tv13.setText(spannableString);
     }
 
     /**
